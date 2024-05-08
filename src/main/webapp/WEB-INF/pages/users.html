@@ -7,14 +7,18 @@
 <body>
 <table border="1">
     <tr><th>Username</th><th>Sex</th><th>email</th></tr>
-    <tr th:each="user : ${users}">
-        <td th:text ="${user.getUsername()}"></td>
+    <tr  th:each="user : ${users}">
+        <td  th:text ="${user.getUsername()}"></td>
         <td th:text ="${user.getSex()}"></td>
         <td th:text ="${user.getEmail()}"></td>
+        <td><a href="delete"><th:form>
+
+        </th:form>Delete user</a>/<a href="edit">Edit user</a>  </td>
     </tr>
 
-</table>
 
+</table>
+<a href="new_user">Add user</a>
 
 </body>
 </html>

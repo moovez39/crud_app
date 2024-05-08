@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form th:method="POST" th:action ="@{user}" th:object="${user}">
+    <label for="name">Enter username</label>
+    <input type="text" th:field = "*{username}" id="name">
+    <br>
+    <label for="sex">Enter choose sex</label>
+    <select th:field= "*{sex}" id="sex">
+        <option th:value="m" th:text ="male"></option>
+        <option th:value="f" th:text ="female"></option>
+    </select>
+    <br>
+    <label for="emali">Enter email</label>
+    <input type="text" th:field = "*{email}" id="emali">
+    <br>
+    <input type="submit">
+</form>
+
+</body>
+</html>

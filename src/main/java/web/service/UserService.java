@@ -20,6 +20,7 @@ public class UserService {
     public List<User> getUsers(){
         return userDao.getUsers();
     }
+    public void editUser(User user){userDao.editUser(user);}
     public void removeUser(int id) {
         userDao.removeUser(id);
     }

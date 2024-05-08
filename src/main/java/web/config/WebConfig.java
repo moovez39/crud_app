@@ -82,7 +82,7 @@ public class WebConfig implements WebMvcConfigurer {
     Properties additionalProperties() {
         Properties properties = new Properties();
         properties.setProperty("hibernate.hbm2ddl.auto","update");
-        properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
+        properties.setProperty(org.hibernate.cfg.Environment.DIALECT, "org.hibernate.dialect.MySQL8Dialect");
         properties.setProperty(org.hibernate.cfg.Environment.SHOW_SQL, "true");
 
         return properties;
