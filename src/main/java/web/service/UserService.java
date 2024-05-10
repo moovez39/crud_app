@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import web.dao.UserDao;
-import web.dao.UserDaoImpl;
 import web.model.User;
 
 import java.util.List;
@@ -23,6 +22,9 @@ public class UserService {
     public void editUser(User user){userDao.editUser(user);}
     public void removeUser(int id) {
         userDao.removeUser(id);
+    }
+    public User findUser(int id){
+        return userDao.findUser(id);
     }
 
 
