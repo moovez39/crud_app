@@ -7,7 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import web.model.User;
-import web.service.UserService;
+import web.service.UserServiceImpl;
 
 import javax.validation.Valid;
 
@@ -15,12 +15,15 @@ import javax.validation.Valid;
 @Controller
 public class UserController {
 
-    @Autowired
-    private UserService userService;
+    private UserServiceImpl userServiceImpl;
+
+    public UserController(UserServiceImpl userServiceImpl) {
+        this.userServiceImpl = userServiceImpl;
+    }
 
     @GetMapping(value = "/")
     public String index(Model model) {
-        model.addAttribute("users", userService.getUsers());
+        model.addAttribute("users", userServiceImpl.getUsers());
         return "users";
     }
 
@@ -33,7 +36,7 @@ public class UserController {
 
     @GetMapping(value = "/edit_user")
     public String editUser(@RequestParam(name = "") int id, Model model) {
-        model.addAttribute("user", userService.findUser(id));
+        model.addAttribute("user", userServiceImpl.findUser(id));
         return "edit_user";
     }
 
@@ -42,7 +45,7 @@ public class UserController {
         if(bindingResult.hasErrors()){
             return "new_user";
         }
-        userService.addUser(user);
+        userServiceImpl.addUser(user);
         return "redirect:/";
     }
 
@@ -52,14 +55,14 @@ public class UserController {
         if(bindingResult.hasErrors()){
             return "edit_user";
         }
-        userService.editUser(user);
+        userServiceImpl.editUser(user);
         return "redirect:/";
     }
 
     @PostMapping("/delete")
     public String deleteUser(@ModelAttribute("user") User user, @RequestParam(name = "id") int id) {
         System.out.println("test");
-        userService.removeUser(id);
+        userServiceImpl.removeUser(id);
         return "redirect:/";
     }
 }

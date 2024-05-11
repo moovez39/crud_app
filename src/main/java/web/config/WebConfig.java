@@ -29,7 +29,7 @@ import java.util.Properties;
 @ComponentScan("web")
 @PropertySource("classpath:db.properties")
 @EnableWebMvc
-@EnableTransactionManagement
+@EnableTransactionManagement(proxyTargetClass = true)
 public class WebConfig implements WebMvcConfigurer {
 
     private final ApplicationContext applicationContext;
